@@ -1,0 +1,14 @@
+[Unit]
+Description=Reaven OS Installer
+After=systemd-user-sessions.service network.target
+
+[Service]
+Type=simple
+User=root
+ExecStartPre=/bin/sleep 3
+ExecStart=/usr/bin/startx /usr/bin/python3 /usr/local/bin/boot_screen.py -- /usr/bin/Xorg -keeptty
+Restart=no
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=multi-user.target
